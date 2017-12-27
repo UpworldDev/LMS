@@ -52,7 +52,8 @@ router.get('/', checkJwt, checkScopes, (req, res, next) => res.status(200).send(
   message: 'Welcome to the API!',
 }));
 
-router.get('/persons', checkJwt, checkScopes, personsController.list);
+router.get('/persons', personsController.list);
+//router.get('/persons', checkJwt, checkScopes, personsController.list);
 router.post('/persons', checkJwt, checkScopes, personsController.create);
 router.get('/persons/:personId', checkJwt, checkScopes, personsController.retrieve);
 router.put('/persons/:personId', checkJwt, checkScopes, personsController.update);
