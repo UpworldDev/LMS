@@ -40,20 +40,12 @@ router.get('/private', checkJwt, checkScopes, function(req, res) {
 const personsController = require('../controllers').persons;
 const assessmentsController = require('../controllers').assessments;
 
-/* GET home page. 
-router.get('/', (req, res, next) => {
-  res.sendFile(path.join(
-//    __dirname, '..', '..', 'client', 'views', 'index.html'));
-    __dirname, '..', '..', 'index.html'));
-});
-*/
-
 router.get('/', checkJwt, checkScopes, (req, res, next) => res.status(200).send({
   message: 'Welcome to the API!',
 }));
 
-router.get('/persons', personsController.list);
-//router.get('/persons', checkJwt, checkScopes, personsController.list);
+//router.get('/persons', personsController.list);                                           // No Security on Restfull Endpoint
+router.get('/persons', checkJwt, checkScopes, personsController.list);                      // Secured Restfull Endpoint
 router.post('/persons', checkJwt, checkScopes, personsController.create);
 router.get('/persons/:personId', checkJwt, checkScopes, personsController.retrieve);
 router.put('/persons/:personId', checkJwt, checkScopes, personsController.update);
