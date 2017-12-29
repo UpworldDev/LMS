@@ -5,7 +5,7 @@
   "test": {
     "username": "rjklein",
     "password": "P@ssw0rd",
-    "database": "UpWorld-test",
+    "database": "UpWorld-dev",
     "host": "127.0.0.1",
     "port": 5432,
     "dialect": "postgres"
