@@ -9,7 +9,7 @@ Install postgress locally
 
 create a Upworld-dev db.
 
-Clone the project then runn 'npm install' from command line in project folder to pull all of Node requirements.
+Clone the project then run 'npm install' from command line in project folder to pull all of Node requirements.
 
 edit Auth0-variables.js and switch the Callback commented out line for localhost with Heroku
 
