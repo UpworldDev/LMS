@@ -3,12 +3,18 @@ Learning Management System - Basic secure restful API framework
 
 Can be accessed at https://aqueous-journey-57962.herokuapp.com/
 
-NOTE: working on creating local build parameters for Postgress!!!(again) currently 
-built for Heroku only. 
+LOCAL BUILD STEPS 
 
-LOCAL BUILD STEPS TBD
+Install postgress locally
 
-If you clone the project run 'npm install' from command line to pull all of Node requirements.
+create a Upworld-dev db.
+
+Clone the project then runn 'npm install' from command line in project folder to pull all of Node requirements.
+
+edit Auth0-variables.js and switch the Callback commented out line for localhost with Heroku
+
+Edit the 'test' settings in /server/config/config.json for your local postgress setup
+
+create tables in postgress by running '../node_modules/bin/sequelize db:migrate' from server folder in Command line  
+
 Use 'npm Start' to run locally.
-
-A local Postgress install is required run '../node_modules/bin/sequelize db:migrate' from the server folder  
