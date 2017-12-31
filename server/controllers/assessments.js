@@ -6,7 +6,7 @@ module.exports = {
       .create({
         assessmentName: req.body.assessmentName,
         value: req.body.value,
-        studentId: req.params.personId,
+        studentId: req.params.personId
       })
       .then(assessment => res.status(201).send(assessment))
       .catch(error => res.status(400).send(error));
@@ -23,7 +23,7 @@ module.exports = {
       .then(assessment => {
         if (!assessment) {
           return res.status(404).send({
-            message: 'Assessment Not Found',
+            message: 'Assessment Not Found'
           });
         }
         return res.status(200).send(assessment);
@@ -36,7 +36,7 @@ module.exports = {
       .then(assessment => {
         if (!assessment) {
           return res.status(404).send({
-            message: 'Assessment Not Found',
+            message: 'Assessment Not Found'
           });
         }
         return assessment
@@ -52,7 +52,7 @@ module.exports = {
       .then(assessment => {
         if (!assessment) {
           return res.status(400).send({
-            message: 'Assessment Not Found',
+            message: 'Assessment Not Found'
           });
         }
         return assessment
@@ -61,5 +61,5 @@ module.exports = {
           .catch(error => res.status(400).send(error));
       })
       .catch(error => res.status(400).send(error));
-  },
+  }
 };

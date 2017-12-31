@@ -7,7 +7,7 @@
     .controller('apiController', ($scope, $http) => {
       $scope.formData = {};
       $scope.personData = {};
-      
+  
       // Get all persons
       $http.get('/api/persons')
       .success((data) => {

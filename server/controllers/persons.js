@@ -10,7 +10,7 @@ module.exports = {
         dateOfBirth: req.body.dateOfBirth,
         isHispanic: req.body.isHispanic,
         race: req.body.race,
-        gender: req.body.gender,
+        gender: req.body.gender
       })
       .then(person => res.status(201).send(person))
       .catch(error => res.status(400).send(error));
@@ -27,7 +27,7 @@ module.exports = {
       .then(person => {
         if (!person) {
           return res.status(404).send({
-            message: 'Person Not Found',
+            message: 'Person Not Found'
           });
         }
         return res.status(200).send(person);
@@ -40,7 +40,7 @@ module.exports = {
       .then(person => {
         if (!person) {
           return res.status(404).send({
-            message: 'Person Not Found',
+            message: 'Person Not Found'
           });
         }
         return person
@@ -56,7 +56,7 @@ module.exports = {
       .then(person => {
         if (!person) {
           return res.status(400).send({
-            message: 'Person Not Found',
+            message: 'Person Not Found'
           });
         }
         return person
@@ -65,5 +65,5 @@ module.exports = {
           .catch(error => res.status(400).send(error));
       })
       .catch(error => res.status(400).send(error));
-  },
+  }
 };

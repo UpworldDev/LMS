@@ -21,7 +21,7 @@ module.exports = {
       location: 'Merchandise Mart',
       createdAt: new Date(),
       updatedAt: new Date()      
-    },
+    }
     ], {});
   },
   down: (queryInterface, Sequelize) => {

@@ -21,7 +21,7 @@ module.exports = {
       gender: 'female',
       createdAt: new Date(),
       updatedAt: new Date()      
-    },
+    }
     ], {});
   },
   down: (queryInterface, Sequelize) => {

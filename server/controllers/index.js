@@ -3,6 +3,5 @@ const assessments = require('./assessments');
 
 module.exports = {
   persons,
-  assessments,
-
+  assessments
 };

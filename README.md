@@ -18,3 +18,5 @@ Edit the 'test' settings in /server/config/config.json for your local postgress 
 create tables in postgress by running '../node_modules/bin/sequelize db:migrate' from server folder in Command line  
 
 Use 'npm Start' to run locally.
+
+Unit & Integrated tests are run from npm test (NOTE: I installed Mocha, Chai and Chai-http globally with NPM INSTALL -g ...)

@@ -27,7 +27,7 @@ const checkScopes = jwtAuthz(['read:messages']);
 
 router.get('/public', function(req, res) {
   res.json({
-    message: "Hello from a public endpoint! You don't need to be authenticated to see this."
+    message: 'Hello from a public endpoint! You don\'t need to be authenticated to see this.'
   });
 });
 
@@ -41,7 +41,7 @@ const personsController = require('../controllers').persons;
 const assessmentsController = require('../controllers').assessments;
 
 router.get('/', checkJwt, checkScopes, (req, res, next) => res.status(200).send({
-  message: 'Welcome to the API!',
+  message: 'Welcome to the API!'
 }));
 
 //router.get('/persons', personsController.list);                                           // No Security on Restfull Endpoint
@@ -58,7 +58,8 @@ router.delete('/persons/:personId/assessments/:assessmentId', checkJwt, checkSco
 // For any other request method on assessment items, we're going to return "Method Not Allowed"
 router.all('/persons/:personId/assessments', (req, res, next) =>
   res.status(405).send({
-    message: 'Method Not Allowed',
-}));
+    message: 'Method Not Allowed'
+  })
+);
 
 module.exports = router;
