@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "SET \"NODE_ENV=test\" & supervisor ./bin/www",
+    "start": "set \"NODE_ENV=test\" & supervisor ./bin/www",
+    "istart": "export \"NODE_ENV=test\" & supervisor ./bin/www",
     "test": "mocha test --exit"
   },
   "dependencies": {

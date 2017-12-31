@@ -40,7 +40,7 @@ router.get('/private', checkJwt, checkScopes, function(req, res) {
 const personsController = require('../controllers').persons;
 const assessmentsController = require('../controllers').assessments;
 
-router.get('/', checkJwt, checkScopes, (req, res, next) => res.status(200).send({
+router.get('/', (req, res, next) => res.status(200).send({
   message: 'Welcome to the API!'
 }));
 
