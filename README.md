@@ -15,6 +15,8 @@ edit Auth0-variables.js and switch the Callback commented out line for localhost
 
 Edit the 'test' settings in /server/config/config.json for your local postgress setup
 
-create tables in postgress by running '../node_modules/bin/sequelize db:migrate' from server folder in Command line  
+create tables in postgress by running 'c:/projects/lms/node_modules/.bin/sequelize db:migrate --env test' from server folder in Command line (NOTE: change projects/lms to your project file location)   
 
 Use 'npm Start' to run locally.
+
+Unit & Integrated tests are run from 'npm test' (NOTE: I installed Mocha, Chai and Chai-http globally with NPM INSTALL -g ...)
