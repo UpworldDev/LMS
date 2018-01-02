@@ -31,10 +31,10 @@
         templateUrl: 'app/home/home.html',
         controllerAs: 'vm'
       })
-      .state('Api', {
-        url: '/api',
-        controller: 'ApiController',
-        templateUrl: 'app/api/api.html',
+      .state('user', {
+        url: '/',
+        controller: 'UserController',
+        templateUrl: 'app/user/user.html',
         controllerAs: 'vm'
       })
       .state('callback', {

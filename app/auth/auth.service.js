@@ -36,7 +36,7 @@
       localStorage.setItem('id_token', authResult.idToken);
       localStorage.setItem('expires_at', expiresAt);
     }
-    
+
     function logout() {
       // Remove tokens and expiry time from localStorage
       localStorage.removeItem('access_token');

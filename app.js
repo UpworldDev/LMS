@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
 const routes = require('./server/routes/index');
-// var users = require('./routes/users');
+const users = require('./server/routes/users');
 
 const app = express();
 
@@ -27,7 +27,7 @@ app.get('/callback', function(req, res) {
   res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-// app.use('/users', users);
+app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

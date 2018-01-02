@@ -23,6 +23,13 @@
           Log Out
       </button>
 
+      <button
+        class="btn btn-primary btn-margin"
+        ng-if="!vm.auth.isAuthenticated()"
+        ui-sref="user">
+          Create Log In
+      </button>
+
     </div>
   </div>
 </nav>

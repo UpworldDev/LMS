@@ -4,7 +4,7 @@
 
   angular
     .module('app')
-    .controller('apiController', ($scope, $http) => {
+    .controller('ApiController', ($scope, $http) => {
       $scope.formData = {};
       $scope.personData = {};
   

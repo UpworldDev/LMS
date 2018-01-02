@@ -1,0 +1,22 @@
+<h4 ng-if="vm.auth.isAuthenticated()">
+    You are logged in!
+</h4>
+<h4 ng-if="!vm.auth.isAuthenticated()">
+  You are not logged in! Please <a ng-click="vm.auth.login()">Log In</a> to continue.
+</h4>
+<div ng-if="!vm.auth.isAuthenticated()" class="container" ng-controller="UserApiController">
+  <div class="header">
+    <h1>UpWorld App</h1>
+    <hr>
+    <h1 class="lead">Create User</h1>
+  </div>
+  <div class="LMS-form">
+    <form>
+      <div class="form-group">
+        <input type="text" class="form-control input-lg" placeholder="Enter email..." ng-model="formData.email">
+        <input type="text" class="form-control input-lg" placeholder="Enter password..." ng-model="formData.password">
+      </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="createUser()">Create New User</button>
+    </form>
+  </div>
+</div>

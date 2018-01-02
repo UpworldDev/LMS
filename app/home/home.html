@@ -4,7 +4,7 @@
 <h4 ng-if="!vm.auth.isAuthenticated()">
   You are not logged in! Please <a ng-click="vm.auth.login()">Log In</a> to continue.
 </h4>
-<div ng-if="vm.auth.isAuthenticated()" class="container" ng-controller="apiController">
+<div ng-if="vm.auth.isAuthenticated()" class="container" ng-controller="ApiController">
   <div class="header">
     <h1>UpWorld App</h1>
     <hr>
