@@ -6,17 +6,17 @@ require('dotenv').config();
 var ManagementClient = require('auth0').ManagementClient;
 var management = new ManagementClient({
   domain: 'upworld.auth0.com',
-  clientId: process.env.CLIENT_ID ,
+  clientId: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET
 });
 
 /* create user */
 router.post('/', function(req, res, next) {
   management.createUser({
-    "connection": "Username-Password-Authentication",
-    "email": req.body.email,
-    "password": req.body.password,
-    "verify_email": true,
+    'connection': 'Username-Password-Authentication',
+    'email': req.body.email,
+    'password': req.body.password,
+    'verify_email': true
   }, 
    function (err, user) {
     if (err) {

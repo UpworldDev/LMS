@@ -5,7 +5,7 @@ var should = chai.should();
 var chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 
-var server = require('../../app');
+var server = require('../../server');
 
 describe('routes : person', function() {
 

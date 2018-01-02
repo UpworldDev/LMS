@@ -21,7 +21,7 @@
           console.log('Error: ' + error);
         });
       };
-/*  
+      /*  
       // Delete a person
       $scope.deletePerson = (personID) => {
         $http.delete('/api/persons/' + personID)
@@ -33,7 +33,7 @@
           console.log('Error: ' + data);
         });
       };
-*/
+      */
     });
     
 })();

@@ -44,7 +44,17 @@ router.get('/', (req, res, next) => res.status(200).send({
   message: 'Welcome to the API!'
 }));
 
-//router.get('/persons', personsController.list);                                           // No Security on Restfull Endpoint
+
+router.get('/persons', personsController.list);                                           // No Security on Restfull Endpoint
+router.post('/persons', personsController.create);
+router.get('/persons/:personId', personsController.retrieve);
+router.put('/persons/:personId', personsController.update);
+router.delete('/persons/:personId', personsController.destroy);
+
+router.post('/persons/:personId/assessments', assessmentsController.create);
+router.put('/persons/:personId/assessments/:assessmentId', assessmentsController.update);
+router.delete('/persons/:personId/assessments/:assessmentId', assessmentsController.destroy);
+/*
 router.get('/persons', checkJwt, checkScopes, personsController.list);                      // Secured Restfull Endpoint
 router.post('/persons', checkJwt, checkScopes, personsController.create);
 router.get('/persons/:personId', checkJwt, checkScopes, personsController.retrieve);
@@ -54,7 +64,7 @@ router.delete('/persons/:personId', checkJwt, checkScopes, personsController.des
 router.post('/persons/:personId/assessments', checkJwt, checkScopes, assessmentsController.create);
 router.put('/persons/:personId/assessments/:assessmentId', checkJwt, checkScopes, assessmentsController.update);
 router.delete('/persons/:personId/assessments/:assessmentId', checkJwt, checkScopes, assessmentsController.destroy);
-
+*/
 // For any other request method on assessment items, we're going to return "Method Not Allowed"
 router.all('/persons/:personId/assessments', (req, res, next) =>
   res.status(405).send({

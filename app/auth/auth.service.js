@@ -57,6 +57,6 @@
       handleAuthentication: handleAuthentication,
       logout: logout,
       isAuthenticated: isAuthenticated
-    }
+    };
   }
 })();
