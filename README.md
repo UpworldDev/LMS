@@ -17,6 +17,6 @@ Edit the 'test' settings in /server/config/config.json for your local postgress 
 
 create tables in postgress by running 'c:/projects/lms/node_modules/.bin/sequelize db:migrate --env test' from server folder in Command line (NOTE: change projects/lms to your project file location)   
 
-Use 'npm Start' to run locally.
+Use 'npm Start' or on OSX use 'npm istart' to run locally.
 
 Unit & Integrated tests are run from 'npm test' (NOTE: I installed Mocha, Chai and Chai-http globally with NPM INSTALL -g ...)
