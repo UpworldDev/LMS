@@ -19,7 +19,7 @@ if (config.use_env_variable) {
 // sequelize.sync(); // uncomment for creating all missing tables in Database overuse with MOCHA
 
 // Force sync all models drops all tables and rebuilds from model folder definitions
-sequelize.sync({force: true})
+// sequelize.sync({force: true})
 
 fs
   .readdirSync(__dirname)
