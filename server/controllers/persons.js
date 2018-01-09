@@ -1,4 +1,6 @@
 const Person = require('../models').Person;
+const Assessment = require('../models').Assessment;
+const { parse } = require('../functions/parser');
 
 module.exports = {
   create(req, res) {
@@ -16,8 +18,30 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },
   list(req, res) {
+    const options = parse(req.query, Person);
+
     return Person
-      .all()
+      .findAll(options)
+      .then(persons => res.status(200).send(persons))
+      .catch(error => res.status(400).send(error));
+  },
+  listStudentAssessments(req, res) {
+    /* jshint ignore:start */
+    const q = {
+      userType: 'student',
+      ...req.query          
+    }; 
+    /* jshint ignore:end */
+    return Person
+      .findAll({
+        attributes: ['lastName'],
+        where: q,  // jshint ignore:line
+        include: [{
+          model: Assessment,
+          as: 'assessments',
+          attributes:['assessmentName']
+        }]
+      })
       .then(persons => res.status(200).send(persons))
       .catch(error => res.status(400).send(error));
   },

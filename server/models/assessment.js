@@ -17,9 +17,9 @@ module.exports = (sequelize, DataTypes) => {
 		}
 	);
 
-	  Assessment.associate = models => {
+	Assessment.associate = models => {
 		Assessment.belongsTo(models.Person, {
-			foreignKey: 'studentId',
+			foreignKey: 'personId',
 			onDelete: 'CASCADE',
 			allowNull: false
 		});

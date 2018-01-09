@@ -6,14 +6,14 @@ module.exports = {
       .create({
         assessmentName: req.body.assessmentName,
         value: req.body.value,
-        studentId: req.params.personId
+        personId: req.params.personId
       })
       .then(assessment => res.status(201).send(assessment))
       .catch(error => res.status(400).send(error));
   },
   list(req, res) {
     return Assessment
-      .all()
+      .findAll({where: req.query})
       .then(assessments => res.status(200).send(assessments))
       .catch(error => res.status(400).send(error));
   },

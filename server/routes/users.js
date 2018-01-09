@@ -13,10 +13,10 @@ var management = new ManagementClient({
 /* create user */
 router.post('/', function(req, res, next) {
   management.createUser({
-    'connection': 'Username-Password-Authentication',
-    'email': req.body.email,
-    'password': req.body.password,
-    'verify_email': true
+    connection: 'Username-Password-Authentication',
+    email: req.body.email,
+    password: req.body.password,
+    verify_email: true
   }, 
    function (err, user) {
     if (err) {
@@ -25,7 +25,7 @@ router.post('/', function(req, res, next) {
     } else {
       res.status(200).send({message: 'User Created Successfully! ', user});
       console.log(user);
-    };
+    }
   });
 });
 

@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
 		"Contact",
 		{
 			contactType: {
-				type: DataTypes.INTEGER,
+				type: DataTypes.STRING,
 				allowNull: false
 			},
 
@@ -22,9 +22,9 @@ module.exports = (sequelize, DataTypes) => {
 
 	Contact.associate = models => {
 		Contact.belongsTo(models.Person, {
-			foreignKey: {
-				allowNull: false
-			}
+			foreignKey: 'personId',
+			onDelete: 'CASCADE',
+			allowNull: false
 		});
 	};
 

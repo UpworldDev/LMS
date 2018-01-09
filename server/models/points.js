@@ -5,9 +5,8 @@ module.exports = (sequelize, DataTypes) => {
 			pointBalance: {
 				type: DataTypes.INTEGER,
 				allowNull: false
-			}
+			},
 
-			// need point history table
 		},
 		{
 			timestamps: true
@@ -16,9 +15,9 @@ module.exports = (sequelize, DataTypes) => {
 
 	Point.associate = models => {
 		Point.belongsTo(models.Person, {
-			foreignKey: {
+			foreignKey: 'personId',
+				onDelete: 'CASCADE',
 				allowNull: false
-			}
 		});
 	};
 

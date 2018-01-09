@@ -19,6 +19,15 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
+      personId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'People',
+          key: 'id',
+          as: 'personId',
+        }
+      }  
     }),
   down: (queryInterface /* , Sequelize */) =>
     queryInterface.dropTable('Points'),

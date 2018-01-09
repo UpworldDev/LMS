@@ -14,12 +14,13 @@ module.exports = (sequelize, DataTypes) => {
 
 	StudentGuardianRelationship.associate = models => {
 		StudentGuardianRelationship.belongsTo(models.Person, {
-			foreignKey: {
-				field: "Student",
-				allowNull: false
-			}
+			foreignKey: 'personId',
+			onDelete: 'CASCADE',
+			allowNull: false
 		});
+	};
 
+	StudentGuardianRelationship.associate = models => {
 		StudentGuardianRelationship.belongsTo(models.Person, {
 			foreignKey: {
 				field: "Guardian",

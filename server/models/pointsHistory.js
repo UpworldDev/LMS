@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
 	PointHistory.associate = models => {
 		PointHistory.belongsTo(models.Person, {
 			foreignKey: {
-				field: "studentID",
+				field: "personId",
 				allowNull: false
 			}
 		});
