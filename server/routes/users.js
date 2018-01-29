@@ -6,8 +6,8 @@ require('dotenv').config();
 var ManagementClient = require('auth0').ManagementClient;
 var management = new ManagementClient({
   domain: 'upworld.auth0.com',
-  clientId: process.env.CLIENT_ID,
-  clientSecret: process.env.CLIENT_SECRET
+  clientId: 'marc.ceruti@gmail.com',
+  clientSecret: 'P@ssw0rd'
 });
 
 /* create user */
