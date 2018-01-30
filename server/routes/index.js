@@ -87,6 +87,13 @@ router.delete('/persons/:personId/attendances/:id', attendancesHandler.remove())
 router.put('/persons/:personId/attendances/:id', attendancesHandler.update());
 router.post('/persons/:personId/bulkAttendances', attendancesHandler.bulkCreate());
 
+router.post('/students', studentsHandler.create());
+router.get('/students/:studentId', studentsHandler.get());
+router.get('/students/', studentsHandler.query());
+router.delete('/students/:studentId', studentsHandler.remove());
+router.put('/students/:studentId/', studentsHandler.update());
+router.post('/students/bulk', studentsHandler.bulkCreate());
+
 router.post('/courses', coursesHandler.create());
 router.get('/courses/:courseId', coursesHandler.get());
 router.get('/courses/', coursesHandler.query());
@@ -115,7 +122,7 @@ router.delete('/classes/:id', classesHandler.remove());
 router.put('/classes/:id/', classesHandler.update());
 router.post('/classes/bulk', classesHandler.bulkCreate());
 
-router.post('/classes/:classId/students/:studentId', classMembersHandler.create());
+router.post('/classes/:classId/students/:studentId', classMembersHandler.createFromParams());
 router.get('/classes/:classId/students/', classMembersHandler.query());
 router.delete('/classes/:classId/students/:studentId', classMembersHandler.remove());
 

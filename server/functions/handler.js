@@ -28,6 +28,25 @@ class ModelHandler {
     ];
   }
 
+	createFromParams() {
+		const handle = (req, res, next) => {
+			this.model
+				.create(req.params)
+				.then(respond)
+				.catch(next);
+
+			function respond(row) {
+				res.status(201);
+				res.send(res.transform(row));
+			}
+		};
+
+		return [
+			raw,
+			handle
+		];
+	}
+
   bulkCreate() {
     const handle = (req, res, next) => {
       this.model
