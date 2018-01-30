@@ -50,6 +50,13 @@ const pointsHandler = new ModelHandler(require('../models').Point);
 const pointHistoriesHandler = new ModelHandler(require('../models').PointHistory);
 const studentsHandler = new ModelHandler(require('../models').Student);
 const attendancesHandler = new ModelHandler(require('../models').Attendance);
+const classesHandler = new ModelHandler(require('../models').Class);
+const classAttendancesHandler = new ModelHandler(require('../models').ClassAttendance);
+const classMembersHandler = new ModelHandler(require('../models').ClassMember);
+const coursesHandler = new ModelHandler(require('../models').Course);
+const teachersHandler = new ModelHandler(require('../models').Teacher);
+const termsHandler = new ModelHandler(require('../models').Term);
+
 
 router.get('/', (req, res, next) => res.status(200).send({
   message: 'Welcome to the API!'
@@ -79,6 +86,20 @@ router.get('/persons/:personId/attendances', attendancesHandler.query());
 router.delete('/persons/:personId/attendances/:id', attendancesHandler.remove());
 router.put('/persons/:personId/attendances/:id', attendancesHandler.update());
 router.post('/persons/:personId/bulkAttendances', attendancesHandler.bulkCreate());
+
+router.post('/courses', coursesHandler.create());
+router.get('/courses/:courseId', coursesHandler.get());
+router.get('/courses/bulk', coursesHandler.query());
+router.delete('/courses/:courseId', coursesHandler.remove());
+router.put('/courses/:courseId/', coursesHandler.update());
+router.post('/courses/bulk', coursesHandler.bulkCreate());
+
+router.post('/terms', termsHandler.create());
+router.get('/terms/:termId', termsHandler.get());
+router.get('/terms/bulk', termsHandler.query());
+router.delete('/terms/:termId', termsHandler.remove());
+router.put('/terms/:termId/', termsHandler.update());
+router.post('/terms/bulk', termsHandler.bulkCreate());
 
 /*
 router.get('/persons', checkJwt, checkScopes, personsController.list);                      // Secured Restfull Endpoint
