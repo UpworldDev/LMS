@@ -89,17 +89,35 @@ router.post('/persons/:personId/bulkAttendances', attendancesHandler.bulkCreate(
 
 router.post('/courses', coursesHandler.create());
 router.get('/courses/:courseId', coursesHandler.get());
-router.get('/courses/bulk', coursesHandler.query());
+router.get('/courses/', coursesHandler.query());
 router.delete('/courses/:courseId', coursesHandler.remove());
 router.put('/courses/:courseId/', coursesHandler.update());
 router.post('/courses/bulk', coursesHandler.bulkCreate());
 
 router.post('/terms', termsHandler.create());
-router.get('/terms/:termId', termsHandler.get());
-router.get('/terms/bulk', termsHandler.query());
-router.delete('/terms/:termId', termsHandler.remove());
-router.put('/terms/:termId/', termsHandler.update());
+router.get('/terms/:id', termsHandler.get());
+router.get('/terms/', termsHandler.query());
+router.delete('/terms/:id', termsHandler.remove());
+router.put('/terms/:id/', termsHandler.update());
 router.post('/terms/bulk', termsHandler.bulkCreate());
+
+router.post('/teachers', teachersHandler.create());
+router.get('/teachers/:id', teachersHandler.get());
+router.get('/teachers/', teachersHandler.query());
+router.delete('/teachers/:id', teachersHandler.remove());
+router.put('/teachers/:id/', teachersHandler.update());
+router.post('/teachers/bulk', teachersHandler.bulkCreate());
+
+router.post('/classes', classesHandler.create());
+router.get('/classes/:id', classesHandler.get());
+router.get('/classes/', classesHandler.query());
+router.delete('/classes/:id', classesHandler.remove());
+router.put('/classes/:id/', classesHandler.update());
+router.post('/classes/bulk', classesHandler.bulkCreate());
+
+router.post('/classes/:classId/students/:studentId', classMembersHandler.create());
+router.get('/classes/:classId/students/', classMembersHandler.query());
+router.delete('/classes/:classId/students/:studentId', classMembersHandler.remove());
 
 /*
 router.get('/persons', checkJwt, checkScopes, personsController.list);                      // Secured Restfull Endpoint

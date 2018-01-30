@@ -12,5 +12,11 @@ module.exports = (sequelize, DataTypes) => {
 		}
 	);
 
+	Course.associate = models => {
+		Course.hasMany(models.Class, {
+			foreignKey: 'courseId',
+		});
+	};
+
 	return Course;
 };

@@ -16,6 +16,12 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false
 		});
 	};
+
+	Teacher.associate = models => {
+		Teacher.hasMany(models.Class, {
+			foreignKey: 'teacherId',
+		});
+	};
 	
 	return Teacher;
 };
