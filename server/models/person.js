@@ -3,6 +3,12 @@ module.exports = (sequelize, DataTypes) => {
 		// enum list, types: student, mentor, parent/guardian,
 		// inactive students, graduate (nonmentors).
 		// graduate (mentors)
+		client: {
+			type: DataTypes.STRING,
+			defaultValue: "Development",
+			allowNull: false
+		},
+
 		userType: {
 			type: DataTypes.STRING,
 			allowNull: false
@@ -30,6 +36,7 @@ module.exports = (sequelize, DataTypes) => {
 
 		isHispanic: {
 			type: DataTypes.BOOLEAN,
+			defaultValue: false,
 			allowNull: true
 		},
 
