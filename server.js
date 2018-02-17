@@ -41,7 +41,7 @@ app.get('/callback', function(req, res) {
 });
 
 app.get("*", function(req, res) {
-	res.sendFile(path.join(__dirname, "./upworld-client/build/index.html"));
+	res.sendFile(path.join(__dirname, "../upworld-client/build/index.html"));
 });
 
 http.listen(PORT, function() {
