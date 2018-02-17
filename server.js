@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV === "production") {
 	app.use(express.static("upworld-client/build"));
 } else {
 	// Use express.static to serve the public folder as a static directory
