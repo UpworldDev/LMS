@@ -7,7 +7,7 @@
     "server": "set \"NODE_ENV=test\" & node server.js",
     "client": "cd upworld-client && npm run start",
     "local-start": "set \"NODE_ENV=test\" & concurrently - r \"nodemon server.js\" \"npm run client\"",
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "build": "cd upworld-client && npm run build",
     "deploy": "yarn build && git add . && git commit -m \"Building for production\" && git push heroku master",
     "test": "mocha test --exit"
