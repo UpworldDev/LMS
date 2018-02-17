@@ -15,7 +15,7 @@ edit Auth0-variables.js and switch the Callback commented out line for localhost
 
 Edit the 'test' settings in /server/config/config.json for your local postgress setup
 
-rename the example.env to .env
+rename example.env file in root directory to .env  
 
 create tables in postgress by running 'c:/projects/lms/node_modules/.bin/sequelize db:migrate --env test' from server folder in Command line (NOTE: change projects/lms to your project file location)   
 

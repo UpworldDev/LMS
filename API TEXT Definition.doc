@@ -1,0 +1,77 @@
+basic path is https://aqueous-journey-57962.herokuapp.com/api or http://localhost:5000/api 
+
+supports all basic commands
+get     - for search
+post    - for create
+put     - for update of included fields will not null other fields
+delete  - for delete 
+
+/persons 
+
+get http://localhost:5000/api/persons will respond an array of json objects with the full list of all people in the DB 
+
+[
+  {
+      "id": 1,
+      "userType": "student",
+      "firstName": "John",
+      "lastName": "Doe",
+      "dateOfBirth": "2000-03-25T00:00:00.000Z",
+      "isHispanic": false,
+      "race": "white",
+      "gender": "male",
+      "createdAt": "2017-12-19T19:56:05.316Z",
+      "updatedAt": "2017-12-19T19:56:05.316Z"
+  },
+  {
+      "id": 2,
+      "userType": "student",
+      "firstName": "Julie",
+      "lastName": "Cook",
+      "dateOfBirth": "2000-01-22T00:00:00.000Z",
+      "isHispanic": false,
+      "race": "white",
+      "gender": "female",
+      "createdAt": "2017-12-19T19:56:05.316Z",
+      "updatedAt": "2017-12-19T19:56:05.316Z"
+  }
+]
+
+/person/:personId
+to get a specific person include the id of the record
+
+get http://localhost:5000/api/persons/1 will respond back with a json for the person
+
+{
+    "id": 1,
+    "userType": "student",
+    "firstName": "John",
+    "lastName": "Doe",
+    "dateOfBirth": "2000-03-25T00:00:00.000Z",
+    "isHispanic": false,
+    "race": "white",
+    "gender": "male",
+    "createdAt": "2017-12-19T19:56:05.316Z",
+    "updatedAt": "2017-12-19T19:56:05.316Z"
+}
+
+filters can be included after a ? and are seperated by &
+get http://localhost:5000/api/persons?firstName=Paul,Rocky,John&fields=lastName&sort=lastName,-firstname&include=contacts
+
+"fieldName" =     defines filters for what objects get returned example:  firstName=Paul,Rocky,John 
+fields =          defines what fields to include in the response
+sort =            defines the sort order based upon included field name Note prepend with a - sign for decrement
+include =         defines what sub tables that are associated with this search
+limit =           defines the number of items to return (used for pagination)
+offset =          defines how many items to skip before creating the return list (used for pagination)  
+
+get /persons/:personId/contacts will return all contacts and will not currently limit based on :personId
+
+post /persons/:personId/contacts to create subtable entries the NOTE: personId needs to be included in the json package sent
+
+post /persons/:personId/bulkAttendances requires an array of json attendance objects and will add them all 
+
+NOTE: the passed params are not verified or utilized at present and all IDs like personId and teacherId need to be included in the json 
+
+
+

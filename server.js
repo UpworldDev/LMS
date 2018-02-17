@@ -8,6 +8,8 @@ const bodyParser = require('body-parser');
 const routes = require('./server/routes/index');
 const users = require('./server/routes/users');
 
+
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 require('dotenv').config();
@@ -18,16 +20,33 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'client')));
+
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+	app.use(express.static("upworld-client/build"));
+} else {
+	// Use express.static to serve the public folder as a static directory
+	app.use(express.static("public"));
+}
+
+
+var http = require("http").Server(app);
 
 app.use('/api/', routes);
-app.use('/', express.static(__dirname +  '/'));
-
-app.get('/callback', function(req, res) {
-  res.sendFile(path.join(__dirname + '/index.html'));
-});
 
 app.use('/users', users);
+
+app.get('/callback', function(req, res) {
+  res.sendFile(path.join(__dirname + '/upworld-client/build/index.html'));
+});
+
+app.get("*", function(req, res) {
+	res.sendFile(path.join(__dirname, "./upworld-client/build/index.html"));
+});
+
+http.listen(PORT, function() {
+	console.log(`🌎 ==> Server now running on port ${PORT}!`);
+});
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
