@@ -78,6 +78,10 @@ module.exports = (sequelize, DataTypes) => {
 			foreignKey: 'personId',
 			as: "Students"
 		});
+		Person.hasOne(models.Teacher, {
+			foreignKey: 'teacherId',
+			as: "Teachers"
+		});
 	};
 
 	return Person;
