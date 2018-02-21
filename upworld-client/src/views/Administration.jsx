@@ -11,6 +11,7 @@ import Button from 'elements/CustomButton/CustomButton.jsx';
 import { apiUrl } from "../helpers/api";
 import Datetime from 'react-datetime';
 import {postRequestOptions, postRequestOptionsRaw, getRequestOptions, checkStatus} from '../helpers/fetch';
+import Select from 'react-select';
 
 class Administration extends Component{
     constructor(props) {
@@ -47,21 +48,38 @@ class Administration extends Component{
 	    }
     }
 
-
 	componentDidMount() {
-		const request = getRequestOptions()
-		fetch(apiUrl+this.state.apiRoute, request)
+		const ops = getRequestOptions();
+		let promises = [];
+
+		let getTableDataPromise = fetch(apiUrl + this.state.apiRoute, ops)
 			.then(checkStatus)
 			.then(response => response.json())
-			.then(adminEntities =>
-			{
+			.then(adminEntities => {
+				console.log('Promise handler 1');
 				this.setState({
 					adminEntities
 				})
-			})
-			.catch(function (error) {
-				console.log('Request failed', error);
-			})
+			});
+		promises.push(getTableDataPromise);
+
+		this.state.tableDisplayProps
+			.filter(tableDisplayProp => tableDisplayProp.source)
+			.forEach(function(tableDisplayProp, idx, arr) {
+				let dropdownDataPromise = fetch(apiUrl + tableDisplayProp.source, ops)
+					.then(checkStatus)
+					.then(response => response.json())
+					.then(responseBody => {
+						console.log('Promise handler 2');
+						console.log(responseBody);
+						arr[idx].options = responseBody;
+						this.forceUpdate();
+					});
+				promises.push(dropdownDataPromise);
+			}, this);
+
+		const results = Promise.all(promises);
+		console.log(this.state.tableDisplayProps);
 	}
 
 	updateFormStateProp(propName, propVal) {
@@ -91,6 +109,7 @@ class Administration extends Component{
 
     }
     render(){
+    	console.log('render()');
 	    const edit = (
 		    <Tooltip id="edit">Edit</Tooltip>
 	    );
@@ -125,7 +144,7 @@ class Administration extends Component{
 						                        this.state.tableDisplayProps.map(tableDisplayProp => {
 							                        return <FormGroup>
 								                        <ControlLabel>
-									                        {this.state.entityName} {tableDisplayProp.propName}
+									                        {this.state.entityName} {tableDisplayProp.displayName || tableDisplayProp.propName}
 									                        <span className="star">*</span>
 								                        </ControlLabel>
 								                        {(() => {
@@ -134,15 +153,29 @@ class Administration extends Component{
 											                        return <FormControl
 												                        type="text"
 												                        onChange={ (event) => this.updateFormState(event) }
-											                            name={tableDisplayProp.propName}/>
+												                        name={tableDisplayProp.propName}/>
 										                        case 'date':
-										                        	let selectedDate = '';
+											                        let selectedDate = '';
 											                        return <Datetime
 												                        timeFormat={false}
-												                        inputProps={{placeholder:"Click To Select Date"}}
+												                        inputProps={{placeholder: "Click To Select Date"}}
 												                        onChange={ (event) => event._d && this.updateFormStateProp(tableDisplayProp.propName, event._d.toDateString())}
 												                        value={selectedDate}
 											                        />;
+										                        case 'dropdown':
+										                        	if (tableDisplayProp.options) {
+												                        let selectOptions = tableDisplayProp.options.map(option => {
+													                        return {value: option.id, label: option.name};
+												                        });
+												                        let dropdownVal = -1;
+												                        return <Select
+													                        value={dropdownVal}
+													                        options={selectOptions}
+													                        // onChange={(event) => this.updateFormStateProp('aaa',value)}
+													                        onChange={ (event) => this.updateFormState(event) }
+												                        />
+											                        }
+											                        return '';
 									                        }
 								                        })()}
 							                        </FormGroup>;
@@ -169,7 +202,7 @@ class Administration extends Component{
 					                    <tr>
 						                    {
 						                    	this.state.tableDisplayProps.map(tableDisplayProp => {
-							                        return <th>{tableDisplayProp.propName}</th>;
+							                        return <th>{tableDisplayProp.displayName || tableDisplayProp.propName}</th>;
 						                        })
 						                    }
 						                    <th className="text-right">Actions</th>

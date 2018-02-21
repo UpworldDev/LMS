@@ -28,16 +28,12 @@ module.exports.postRequestOptionsRaw = function(requestData){
 
 // @params [Object] requestData a FORM object
 module.exports.postRequestOptions = function(requestData){
-  
+
   const data = {};
   for (let key of requestData.keys()) {
           data[key] = requestData.get(key);
       }
-  return {
-    method: 'POST',
-    headers: {'Accept': 'application/json', 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('access_token')},
-    body: JSON.stringify(data)
-  }
+  this.postRequestOptionsRaw(data);
 };
 
 //

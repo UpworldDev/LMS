@@ -16,6 +16,7 @@ import Attendance from 'views/Attendance.jsx';
 import Administration from 'views/Administration.jsx';
 import Subjects from 'views/Administration/Subjects.jsx';
 import Terms from 'views/Administration/Terms.jsx';
+import Classes from 'views/Administration/Classes.jsx';
 import DataTables from 'views/Tables/DataTables.jsx';
 import GoogleMaps from 'views/Maps/GoogleMaps.jsx';
 import FullScreenMap from 'views/Maps/FullScreenMap.jsx';
@@ -33,7 +34,8 @@ var dashRoutes = [
 	{ path: "/attendance", name: "Attendance", icon: "pe-7s-note2", component: Attendance },
 	{ collapse: true, path: "/administration", name: "Administration", icon: "pe-7s-hammer", views: [
 		{ path: "/administration/subjects", name: "Subjects", mini: "S", component: Subjects },
-		{ path: "/administration/terms", name: "Terms", mini: "T", component: Terms }
+		{ path: "/administration/terms", name: "Terms", mini: "T", component: Terms },
+		{ path: "/administration/classes", name: "Classes", mini: "C", component: Classes }
 	]},
 	{ collapse: true, path: "/components", name: "Components", state: "openComponents", icon: "pe-7s-plugin", views:[
         { path: "/components/buttons", name: "Buttons", mini: "B", component: Buttons },
