@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
     Grid, Row, Col,
+    Table,
     FormGroup, ControlLabel, FormControl
 } from 'react-bootstrap';
 
@@ -9,6 +10,9 @@ import FormInputs from 'components/FormInputs/FormInputs.jsx';
 import UserCard from 'components/Card/UserCard.jsx';
 import Checkbox from 'elements/CustomCheckbox/CustomCheckbox.jsx';
 import Button from 'elements/CustomButton/CustomButton.jsx';
+
+import { charts } from 'variables/chartsVariables.jsx';
+import ChartistGraph from 'react-chartist';
 
 import Datetime from 'react-datetime';
 // react component that creates a dropdown menu for selection
@@ -107,6 +111,77 @@ class UserPage extends Component {
         return (
             <div className="content">
                 <Grid fluid>
+                    <Row>
+                        <Col md={6}>
+                            <Card
+                                title="Upcoming Assignments"
+                                category="Due this week"
+                                tableFullWidth
+                                content={
+                                    <Table responsive>
+                                        <thead>
+                                            <tr>
+                                                <th className="text-center">#</th>
+                                                <th>Assignment</th>
+                                                <th className="text-right">Class</th>
+                                                <th className="text-right">Due Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td className="text-center">1</td>
+                                                <td>Modeling rectangular shapes</td>
+                                                <td>Career Prep</td>
+                                                <td className="text-right">10/15</td>
+                                            </tr>
+                                            <tr>
+                                                <td className="text-center">2</td>
+                                                <td>Emotional Intelligence: Intro</td>
+                                                <td>SEL</td>
+                                                <td className="text-right">10/12</td>
+                                            </tr>
+                                            <tr>
+                                                <td className="text-center">3</td>
+                                                <td>Math exercise 1</td>
+                                                <td>Math</td>
+                                                <td className="text-right">10/12</td>
+                                            </tr>
+                                            <tr>
+                                                <td className="text-center">4</td>
+                                                <td>Writing exercise 1</td>
+                                                <td>ELA</td>
+                                                <td className="text-right">10/13</td>
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </Table>
+                                }
+                            />
+                        </Col>
+                        {
+                            charts.map((prop,key) => {
+                                return (
+                                    <Col md={6} key={key}>
+                                        <Card
+                                            title={prop.chart.title}
+                                            category={prop.chart.category}
+                                            content={
+                                                <ChartistGraph
+                                                    data={prop.chart.chart.data}
+                                                    type={prop.chart.chart.type}
+                                                    options={prop.chart.chart.options}
+                                                    responsiveOptions={prop.chart.chart.responsiveOptions}
+                                                />
+                                            }
+                                            legend={
+                                                prop.chart.legend
+                                            }
+                                        />
+                                    </Col>
+                                );
+                            })
+                        }
+                    </Row>
                     <Row>
                         <Col md={8}>
                             <Card
@@ -242,31 +317,6 @@ class UserPage extends Component {
                                 }
                             />
                         </Col>
-                        <Col md={4}>
-                            <UserCard
-                                bgImage="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400"
-                                avatar={avatar}
-                                name="Mike Andrew"
-                                userName="michael24"
-                                description={
-                                    <span>
-                                        "Lamborghini Mercy
-                                        <br />
-                                        Your chick she so thirsty
-                                        <br />
-                                        I'm in that two seat Lambo"
-                                    </span>
-                                }
-                                socials={
-                                    <div>
-                                        <Button simple><i className="fa fa-facebook-square"></i></Button>
-                                        <Button simple><i className="fa fa-twitter"></i></Button>
-                                        <Button simple><i className="fa fa-google-plus-square"></i></Button>
-                                    </div>
-                                }
-                            />
-                        </Col>
-
                     </Row>
                 </Grid>>
             </div>

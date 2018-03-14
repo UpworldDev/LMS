@@ -21,11 +21,11 @@ class HeaderLinks extends Component{
                         <p className="hidden-lg hidden-md">Dashboard</p>
                     </NavItem>
                     <NavDropdown eventKey={2} title={notification} noCaret id="basic-nav-dropdown">
-                        <MenuItem eventKey={2.1}>Notification 1</MenuItem>
-                        <MenuItem eventKey={2.2}>Notification 2</MenuItem>
-                        <MenuItem eventKey={2.3}>Notification 3</MenuItem>
-                        <MenuItem eventKey={2.4}>Notification 4</MenuItem>
-                        <MenuItem eventKey={2.5}>Another notifications</MenuItem>
+                        <MenuItem eventKey={2.1}>Assignment grade posted (Math)</MenuItem>
+                        <MenuItem eventKey={2.2}>Assignment grade posted (ELA)</MenuItem>
+                        <MenuItem eventKey={2.3}>New Assignment (Career Prep)</MenuItem>
+                        <MenuItem eventKey={2.4}>New Assignment (ELA)</MenuItem>
+                        <MenuItem eventKey={2.5}>New Message</MenuItem>
                     </NavDropdown>
                     <NavItem eventKey={3} href="#">
                         <i className="fa fa-search"></i>
@@ -34,14 +34,13 @@ class HeaderLinks extends Component{
                 </Nav>
                 <Nav pullRight>
                     <NavItem eventKey={1} href="#">Account</NavItem>
-                    <NavDropdown eventKey={2} title="Dropdown" id="basic-nav-dropdown-right">
-                        <MenuItem eventKey={2.1}>Action</MenuItem>
-                        <MenuItem eventKey={2.2}>Another action</MenuItem>
-                        <MenuItem eventKey={2.3}>Something</MenuItem>
-                        <MenuItem eventKey={2.4}>Another action</MenuItem>
-                        <MenuItem eventKey={2.5}>Something</MenuItem>
+                    <NavDropdown eventKey={2} title="Actions" id="basic-nav-dropdown-right">
+                        <MenuItem eventKey={2.1}>Contact your teacher</MenuItem>
+                        <MenuItem eventKey={2.2}>Contact your mentor</MenuItem>
+                        <MenuItem eventKey={2.3}>Send transcript</MenuItem>
+                        <MenuItem eventKey={2.4}>Print transcript</MenuItem>
                         <MenuItem divider />
-                        <MenuItem eventKey={2.5}>Separated link</MenuItem>
+                        <MenuItem eventKey={2.5}>Edit your profile</MenuItem>
                     </NavDropdown>
                     {!this.props.auth.isAuthenticated() ?
                         <NavItem eventKey={3} onClick={() => this.props.auth.login()}>Log in</NavItem>:

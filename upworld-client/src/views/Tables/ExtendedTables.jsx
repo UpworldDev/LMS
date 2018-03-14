@@ -82,54 +82,46 @@ class ExtendedTables extends Component{
                     <Row>
                         <Col md={6}>
                             <Card
-                                title="Table with Links"
-                                category="Here is a subtitle for this table"
+                                title="Upcoming Assignments"
+                                category="Due this week"
                                 tableFullWidth
                                 content={
                                     <Table responsive>
                                         <thead>
                                             <tr>
                                                 <th className="text-center">#</th>
-                                                <th>Name</th>
-                                                <th>Job Position</th>
-                                                <th className="text-right">Salary</th>
-                                                <th className="text-right">Actions</th>
+                                                <th>Assignment</th>
+                                                <th className="text-right">Class</th>
+                                                <th className="text-right">Due Date</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td className="text-center">1</td>
-                                                <td>Andrew Mike</td>
-                                                <td>Develop</td>
-                                                <td className="text-right">€ 99,225</td>
+                                                <td>Modeling rectangular shapes</td>
+                                                <td>Career Prep</td>
+                                                <td className="text-right">10/15</td>
                                                 { actions }
                                             </tr>
                                             <tr>
                                                 <td className="text-center">2</td>
-                                                <td>John Doe</td>
-                                                <td>Design</td>
-                                                <td className="text-right">€ 89,241</td>
+                                                <td>Emotional Intelligence: Intro</td>
+                                                <td>SEL</td>
+                                                <td className="text-right">10/12</td>
                                                 { actions }
                                             </tr>
                                             <tr>
                                                 <td className="text-center">3</td>
-                                                <td>Alex Mike</td>
-                                                <td>Design</td>
-                                                <td className="text-right">€ 92,144</td>
+                                                <td>Math exercise 1</td>
+                                                <td>Math</td>
+                                                <td className="text-right">10/12</td>
                                                 { actions }
                                             </tr>
                                             <tr>
                                                 <td className="text-center">4</td>
-                                                <td>Mike Monday</td>
-                                                <td>Marketing</td>
-                                                <td className="text-right">€ 49,990</td>
-                                                { actions }
-                                            </tr>
-                                            <tr>
-                                                <td className="text-center">5</td>
-                                                <td>Paul Dickens</td>
-                                                <td>Communication</td>
-                                                <td className="text-right">€ 69,201</td>
+                                                <td>Writing exercise 1</td>
+                                                <td>ELA</td>
+                                                <td className="text-right">10/13</td>
                                                 { actions }
                                             </tr>
                                         </tbody>

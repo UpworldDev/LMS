@@ -77,7 +77,7 @@ class RegularForms extends Component{
                                             </ControlLabel>
                                             <Col md={9}>
                                                 <FormControl
-                                                    placeholder="Email"
+                                                    placeholder="Enter email"
                                                     type="email"
                                                 />
                                             </Col>
